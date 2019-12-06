@@ -20,9 +20,6 @@ const App = () => {
                     <Route exact path="/" component={Page} />
                 </div>
             </div>
-            <button onClick={$.post("https://hehmda.herokuapp.com/api/v1/chats/getnewmessages", { "chat_id": "1", "last_id": "-1" })}>
-                КНОПКА
-            </button>
         </BrowserRouter >
     );
 }
