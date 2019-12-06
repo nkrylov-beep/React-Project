@@ -5,9 +5,9 @@ import Content from './Content/Content';
 
 const Page = () => {
     return (
-        <div>
-            <Dialogs/>
-            <Content/>
+        <div className={classes.wrapper}>
+            <div className={classes.dialogs}><Dialogs /></div>
+            <div className={classes.content}><Content /></div>
         </div>
     );
 }

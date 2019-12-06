@@ -10,9 +10,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 const App = () => {
     return (
         <BrowserRouter>
-            <script src="jquery-3.4.1.min.js"></script>
-            <div className='app-wrapper'>
+            <div>
                 <Header />
+                <div className="gap"></div>
                 <div className='wrapper'>
                     <Route path="/signup" component={SignupPg} />
                     <Route path="/login" component={SigninPg} />
@@ -20,15 +20,12 @@ const App = () => {
                     <Route exact path="/" component={Page} />
                 </div>
             </div>
-            <button onClick={$.post("https://hehmda.herokuapp.com/api/v1/chats/getnewmessages", { "chat_id": "1", "last_id": "-1" })}>
-                КНОПКА
-            </button>
         </BrowserRouter >
     );
 }
 
-function f(){
-    
+function f() {
+
 }
 
 export default App;
