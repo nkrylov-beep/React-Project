@@ -1,0 +1,13 @@
+.wrapper {
+    display: grid;
+    grid-template-areas: ". dialogs content .";
+    grid-template-columns: 20% 15% 45% 20%;
+}
+
+.content {
+    grid-area: content;
+}
+
+.dialogs {
+    grid-area: dialogs;
+}

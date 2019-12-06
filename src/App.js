@@ -10,9 +10,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 const App = () => {
     return (
         <BrowserRouter>
-            <script src="jquery-3.4.1.min.js"></script>
-            <div className='app-wrapper'>
+            <div>
                 <Header />
+                <div className="gap"></div>
                 <div className='wrapper'>
                     <Route path="/signup" component={SignupPg} />
                     <Route path="/login" component={SigninPg} />
@@ -24,8 +24,8 @@ const App = () => {
     );
 }
 
-function f(){
-    
+function f() {
+
 }
 
 export default App;
