@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './SigninPg.module.css';
+import { NavLink } from "react-router-dom";
 
 const SigninPg = () => {
     return (
@@ -9,6 +10,11 @@ const SigninPg = () => {
             <div className={classes.passwordField}><input /></div>
             <div className={classes.nickInscr}><p className={classes.p}>nickname</p></div>
             <div className={classes.passwordInscr}><p className={classes.p}>password</p></div>
+            <div class={classes.signupBtn}>
+                <NavLink to='/signup'>
+                    <button className={classes.button}>sign up</button>
+                </NavLink>
+            </div>
         </div>
     );
 }
