@@ -21,6 +21,11 @@
     grid-area: name;
 }
 
+.name a {
+    text-decoration: none;
+}
+
 .p {
     font-family: fantasy;
+    color: white;
 }
