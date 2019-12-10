@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1.5fr 0.6fr 1fr 1fr;
     grid-template-rows: 2fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
-    grid-template-areas: ". . . ." ". inscription inscription ." ". . . ." ". nickField nickInscr ." ". passwordField passwordInscr ." ". . . .";
+    grid-template-areas: ". . . button" ". inscription inscription ." ". . . ." ". nickField nickInscr ." ". passwordField passwordInscr ." ". done . .";
     color: rgb(0, 37, 204);
     ;
 }
@@ -34,4 +34,25 @@
 .p2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 130%;
+}
+
+.signupBtn {
+    grid-area: button;
+}
+
+.button {
+    color: white;
+    background-color: rgb(52, 104, 156);
+    padding: .7em 1.5em;
+    outline: none;
+    border: 2px solid;
+}
+
+.button:hover {
+    background: white;
+    color: rgb(52, 104, 156);
+}
+
+.doneBtn {
+    grid-area: done;
 }
