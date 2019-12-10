@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1.5fr 0.6fr 1fr 1fr;
     grid-template-rows: 2fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
-    grid-template-areas: ". . . button" ". inscription inscription ." ". . . ." ". nickField nickInscr ." ". passwordField passwordInscr ." ". . . .";
+    grid-template-areas: ". . . button" ". inscription inscription ." ". . . ." ". nickField nickInscr ." ". passwordField passwordInscr ." ". done . .";
     color: rgb(0, 37, 204);
     ;
 }
@@ -51,4 +51,8 @@
 .button:hover {
     background: white;
     color: rgb(52, 104, 156);
+}
+
+.doneBtn {
+    grid-area: done;
 }

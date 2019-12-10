@@ -15,6 +15,11 @@ const SigninPg = () => {
                     <button className={classes.button}>sign up</button>
                 </NavLink>
             </div>
+            <div class={classes.doneBtn}>
+                <NavLink to='/done'>
+                    <button className={classes.button}>done</button>
+                </NavLink>
+            </div>
         </div>
     );
 }
