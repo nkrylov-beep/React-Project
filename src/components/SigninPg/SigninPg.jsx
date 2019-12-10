@@ -16,7 +16,7 @@ const SigninPg = () => {
                 </NavLink>
             </div>
             <div class={classes.doneBtn}>
-                <NavLink to='/done'>
+                <NavLink to='/page'>
                     <button className={classes.button}>done</button>
                 </NavLink>
             </div>
