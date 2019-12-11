@@ -10,12 +10,12 @@ const SigninPg = () => {
             <div className={classes.passwordField}><input /></div>
             <div className={classes.nickInscr}><p className={classes.p}>nickname</p></div>
             <div className={classes.passwordInscr}><p className={classes.p}>password</p></div>
-            <div class={classes.signupBtn}>
+            <div className={classes.signupBtn}>
                 <NavLink to='/signup'>
                     <button className={classes.button}>sign up</button>
                 </NavLink>
             </div>
-            <div class={classes.doneBtn}>
+            <div className={classes.doneBtn}>
                 <NavLink to='/page'>
                     <button className={classes.button}>done</button>
                 </NavLink>

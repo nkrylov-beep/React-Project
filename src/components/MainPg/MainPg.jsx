@@ -4,18 +4,18 @@ import { NavLink } from "react-router-dom";
 
 const MainPg = () => {
     return (
-        <div class={classes.container}>
-            <div class={classes.loginBtn}>
+        <div className={classes.container}>
+            <div className={classes.loginBtn}>
                 <NavLink to='/login'>
                     <button className={classes.button}>login</button>
                 </NavLink>
             </div>
-            <div class={classes.signupBtn}>
+            <div className={classes.signupBtn}>
                 <NavLink to='/signup'>
                     <button className={classes.button}>sign up</button>
                 </NavLink>
             </div>
-            <div class={classes.info}><p3>ТИПА ИНФА О САЙТЕ</p3></div>
+            <div className={classes.info}>ИПА ИНФА О САЙТЕ</div>
         </div>
     );
 }

@@ -1,3 +1,14 @@
-.class {
-    background-color: rgb(42, 165, 114);
+.addDialBtn {
+    text-align: center;
+    display: block;
+    font-family: arial;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(52, 104, 156);
+}
+
+.addDialBtn:hover {
+    background-color: rgb(45, 95, 145);
 }

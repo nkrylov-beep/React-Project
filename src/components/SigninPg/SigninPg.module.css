@@ -1,8 +1,8 @@
 .container {
     display: grid;
     grid-template-columns: 1.5fr 0.6fr 1fr 1fr;
-    grid-template-rows: 2fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
-    grid-template-areas: ". . . button" ". inscription inscription ." ". . . ." ". nickField nickInscr ." ". passwordField passwordInscr ." ". done . .";
+    grid-template-rows: 2fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr 1fr;
+    grid-template-areas: ". . . button" ". inscription inscription ." ". . . ." ". nickInscr nickField ." ". . . ." ". passwordInscr passwordField ." ". . done .";
     color: rgb(0, 37, 204);
     ;
 }
@@ -25,10 +25,12 @@
 
 .passwordInscr {
     grid-area: passwordInscr;
+    vertical-align: text-bottom;
 }
 
 .p {
     font-family: cursive;
+    line-height: 0em;
 }
 
 .p2 {
