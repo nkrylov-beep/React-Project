@@ -1,27 +1,23 @@
 import React from 'react';
 import classes from './SigninPg.module.css';
 import { NavLink } from "react-router-dom";
+import Form from './Form/Form'
 
-const SigninPg = () => {
-    return (
-        <div className={classes.container}>
-            <div className={classes.inscription}><p className={classes.p2}>LOGIN</p></div>
-            <div className={classes.nickField}><input /></div>
-            <div className={classes.passwordField}><input /></div>
-            <div className={classes.nickInscr}><p className={classes.p}>nickname</p></div>
-            <div className={classes.passwordInscr}><p className={classes.p}>password</p></div>
-            <div className={classes.signupBtn}>
-                <NavLink to='/signup'>
-                    <button className={classes.button}>sign up</button>
-                </NavLink>
+class SigninPg extends React.Component {
+    render() {
+        return (
+            <div className={classes.container}>
+                <div className={classes.inscription}><p className={classes.p2}>LOGIN</p></div>
+                <div className={classes.form}><Form /></div>
+                <div className={classes.loginBtn}></div>
+                <div className={classes.signupBtn}>
+                    <NavLink to='/signup'>
+                        <button className={classes.button}>sign up</button>
+                    </NavLink>
+                </div>
             </div>
-            <div className={classes.doneBtn}>
-                <NavLink to='/page'>
-                    <button className={classes.button}>done</button>
-                </NavLink>
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default SigninPg;
