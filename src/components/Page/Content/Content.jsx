@@ -9,6 +9,38 @@ const DUMMY_DATA = [
   {
     senderId: "janedoe",
     text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    senderId: "janedoe",
+    text: "Brazil!"
   }
 ]
 
@@ -32,10 +64,10 @@ export default class Content extends React.Component {
 class MessageList extends React.Component {
   render() {
     return (
-      <ul className="message-list">
+      <ul className={classes.messagelist}>
         {this.props.messages.map(message => {
           return (
-            <li key={message.id}>
+            <li key={message.id} className={classes.message}>
               <div>
                 {message.senderId}
               </div>
@@ -66,7 +98,7 @@ class SendMessageForm extends React.Component {
   render() {
     return (
       <form
-        className="send-message-form">
+        className={classes.sendmessageform}>
         <input
           onChange={this.handleChange}
           value={this.state.message}
