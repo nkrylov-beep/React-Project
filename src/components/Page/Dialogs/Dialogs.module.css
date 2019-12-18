@@ -1,3 +1,39 @@
 .dialogs {
     grid-area: d;
 }
+
+.dialogId {
+    color: white;
+    background-color: rgb(52, 104, 156);
+    padding: .7em 1.5em;
+    outline: none;
+    border: 2px solid;
+}
+
+.dialog:hover {
+    background-color: rgb(214, 215, 218);
+}
+
+.dialog div:nth-child(1) {
+    font-size: 20px;
+    color: black;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+
+.dialoglist {
+    box-sizing: border-box;
+    padding: 0 0 0 6px;
+    margin: 0;
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    background:white;
+}
+
+.lastsenderId {
+    font-size: 15px;
+    color: blue;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
