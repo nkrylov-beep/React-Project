@@ -8,7 +8,7 @@ class SigninPg extends React.Component {
         return (
             <div className={classes.container}>
                 <div className={classes.inscription}><p className={classes.p2}>LOGIN</p></div>
-                <div className={classes.form}><Form /></div>
+                <div className={classes.form}><Form login={this.props.login}/></div>
                 <div className={classes.loginBtn}></div>
                 <div className={classes.signupBtn}>
                     <NavLink to='/signup'>

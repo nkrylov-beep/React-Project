@@ -16,7 +16,7 @@ class Form extends React.Component {
                     <div className={classes.passwordInscr2}><p className={classes.p}>repeat password</p></div>
                     <div className={classes.gap2}></div>
                 </div>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={this.props.registration}>
                     <input type='text' name='name' />
                     <div className={classes.gap}></div>
                     <input type='text' name='login' />
@@ -25,9 +25,7 @@ class Form extends React.Component {
                     <div className={classes.gap}></div>
                     <input type="password" name='password2' />
                     <div className={classes.gap}></div>
-                    <NavLink to='/page'>
                         <button className={classes.button}>done</button>
-                    </NavLink>
                 </form>
             </div>
         );

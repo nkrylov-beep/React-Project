@@ -12,7 +12,7 @@ class Form extends React.Component {
                     <div className={classes.passwordInscr}><p className={classes.p}>password</p></div>
                     <div className={classes.gap2}></div>
                 </div>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={this.props.login}>
                     <input type='text' name='login' />
                     <div className={classes.gap}></div>
                     <input type="password" name='password' />
