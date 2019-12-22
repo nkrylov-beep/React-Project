@@ -1,20 +1,20 @@
 import React from 'react';
-import classes from './Header.module.css';
-import { NavLink } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Navbar, Nav, Button} from "react-bootstrap";
 
 class Header extends React.Component {
     render() {
         return (
-            <header className={classes.header}>
-                <div className={classes.logo}>
-                    <img src="./favicon.ico"></img>
-                </div>
-                <div className={classes.name}>
-                    <NavLink to='/'>
-                        <p className={classes.p}>No Gnomes Allowed</p>
-                    </NavLink>
-                </div>
-            </header>
+            <Navbar bg="dark" variant="dark">
+                <Navbar.Brand>MonoChrome</Navbar.Brand>
+                <Nav class="mr-auto">
+                    <Button variant="outline-dark" href={'/donate'}>Donate</Button>
+                </Nav>
+                <Nav>
+                    <Button variant="dark" href={'/login'}>Login</Button>
+                    <Button variant="dark" href={'/signup'}>SignUp</Button>
+                </Nav>
+            </Navbar>
         );
     }
 }
