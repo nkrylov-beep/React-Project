@@ -1,19 +1,18 @@
 import React from 'react';
 
 
-export function registration(e) {
+export async function registration(e) {
     e.preventDefault();
-    /*const api_url = await fetch(``);
-    const data = await api_url.json();*/
-    const data = e.target.elements.name.value + " " + e.target.elements.login.value + " " +
-        e.target.elements.password.value + " " + e.target.elements.password2.value;
+    const name = e.target.elements.name.value;
+    const login = e.target.elements.login.value;
+    const password = e.target.elements.password.value;
+    const password2 = e.target.elements.password2.value;
+    const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/registration', {
+        method: 'POST',
+        body: `{\"new_nickname\":\"${name}\", \"new_login\":\"${login}\", \"new_password\": \"${password}\"}, "new_repeat_password\": \"${password2}\"}`
+    });
+    const data = await api_url.json();
     console.log(data);
 }
 
-export function login(e) {
-    e.preventDefault();
-    /*const api_url = await fetch(``);
-    const data = await api_url.json();*/
-    const data = e.target.elements.login.value + " " + e.target.elements.password.value;
-    console.log(data);
-}
+export async function login(e) {}
