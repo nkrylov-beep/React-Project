@@ -10,6 +10,7 @@ export async function registration(e) {
     console.log("111");
     const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/registration', {
         method: 'POST',
+        credentials: 'include';
         headers: {
            'Content-Type': 'application/json;charset=utf-8'
         },
