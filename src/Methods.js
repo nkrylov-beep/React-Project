@@ -8,7 +8,7 @@ export async function registration(e) {
     const password = e.target.elements.password.value;
     const password2 = e.target.elements.password2.value;
     console.log("111");
-    const api_url = await fetch('http://hehmda.herokuapp.com/api/v1/users/registration', {
+    const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/registration', {
         method: 'POST',
         headers: {
            'Content-Type': 'application/json;charset=utf-8'
