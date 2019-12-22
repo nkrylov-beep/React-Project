@@ -7,6 +7,8 @@ import SignupPg from './components/SignupPg/SignupPg';
 import SigninPg from './components/SigninPg/SigninPg';
 import { BrowserRouter, Route } from "react-router-dom";
 import {registration, login} from './Methods';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends React.Component {
     render() {
