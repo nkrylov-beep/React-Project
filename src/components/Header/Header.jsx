@@ -7,7 +7,7 @@ class Header extends React.Component {
         return (
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand>MonoChrome</Navbar.Brand>
-                <Nav class="mr-auto">
+                <Nav className="mr-auto">
                     <Button variant="outline-dark" href={'/donate'}>Donate</Button>
                 </Nav>
                 <Nav>

@@ -7,12 +7,13 @@ export async function registration(e) {
     const login = e.target.elements.login.value;
     const password = e.target.elements.password.value;
     const password2 = e.target.elements.password2.value;
-    const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/registration', {
+    console.log("111");
+    const api_url = await fetch('http://hehmda.herokuapp.com:8000/api/v1/users/registration', {
         method: 'POST',
-        body: `{\"new_nickname\":\"${name}\", \"new_login\":\"${login}\", \"new_password\": \"${password}\"}, "new_repeat_password\": \"${password2}\"}`
+        body: `{\"new_nickname\":\"${name}\", \"new_login\":\"${login}\", \"new_password\": \"${password}\", \"new_repeat_password\": \"${password2}\"}`
     });
     const data = await api_url.json();
-    console.log(data);
+    console.log("555");
 }
 
 export async function login(e) {}
