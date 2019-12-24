@@ -1,0 +1,18 @@
+.name {
+    grid-area: name;
+}
+
+.link {
+    color: white;
+}
+
+.link:hover {
+    text-decoration: none;
+    border-bottom: 2px dotted;
+    color: rgb(111, 109, 114);
+}
+
+.p {
+    font-family: fantasy;
+    color: white;
+}
