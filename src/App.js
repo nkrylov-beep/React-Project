@@ -14,16 +14,11 @@ class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <div>
                     <Header />
-                    <div className="gap"></div>
-                    <div className='wrapper'>
-                        <Route path="/signup" render={props => <SignupPg registration={registration} {...props} />} />
-                        <Route path="/login" render={props => <SigninPg login={login} {...props} />} />
-                        <Route path="/page" component={Page} />
-                        <Route exact path="/" component={MainPg} />
-                    </div>
-                </div>
+                    <Route path="/signup" render={props => <SignupPg registration={registration} {...props} />} />
+                    <Route path="/login" render={props => <SigninPg login={login} {...props} />} />
+                    <Route path="/page" component={Page} />
+                    <Route exact path="/" component={MainPg} />
             </BrowserRouter >
         );
     }

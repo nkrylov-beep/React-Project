@@ -8,15 +8,14 @@ class SigninPg extends React.Component {
         return (
             <Form>
                 <Form.Group>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="text" placeholder="login" />
                 </Form.Group>
-
                 <Form.Group>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="password" />
                 </Form.Group>
-                <Button className="btn-danger" type="submit">
+                <Button className="btn-dark" type="submit">
                     Submit
-                </Button>
+               </Button>
             </Form>
         );
     }
