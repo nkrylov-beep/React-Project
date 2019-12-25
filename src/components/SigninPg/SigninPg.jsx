@@ -11,7 +11,9 @@ class SigninPg extends React.Component {
                 <div className={classes.form}><Form login={this.props.login}/></div>
                 <div className={classes.loginBtn}></div>
                 <div className={classes.signupBtn}>
-                <button className={classes.button}>sign up</button>
+                <NavLink to='/signup'>
+                    <button className={classes.button}>sign up</button>
+                </NavLink>
                 </div>
             </div>
         );
