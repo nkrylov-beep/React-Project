@@ -13,6 +13,8 @@ class Header extends React.Component {
                         Nazvanie
             </NavLink>
                 </Navbar.Brand>
+                <Nav className="mr-auto">
+                </Nav>
                 <Nav>
                     <NavLink to="/signup">
                         <Button variant="dark">SignUp</Button>
