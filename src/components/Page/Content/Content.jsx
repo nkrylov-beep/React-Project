@@ -3,36 +3,29 @@ import classes from './Content.module.css';
 
 
 
-export async function getMessages(e) {
-  e.preventDefault();
+export async function getMessages() {
   console.log("111");
   const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/chats/getnewmessages', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: `{\"chat_id\":\"${chatID}\", \"new_login\":\"${lastID}\"}`
+    body: `{\"chat_id\":\"${chatID}\", \"last_id\":\"${lastID}\"}`
   });
   const data = await api_url.json();
   console.log(data);
   if (data) {
     DUMMY_DATA = data;
   }
-  setTimeout(getMessages, 5000);
 }
 
 let DUMMY_DATA = [
 ]
 
 let chatID = "1";
-let lastID = "-1";
+let lastID = "2";
 
 
 async function refreshMessages() {
-  while (true) {
-    
     getMessages();
-  }
+    setTimeout(refreshMessages, 5000);
 }
 
 
@@ -56,7 +49,9 @@ export default class Content extends React.Component {
 }
 
 class MessageList extends React.Component {
+  
   render() {
+    refreshMessages();
     return (
       <ul className={classes.messagelist}>
        
