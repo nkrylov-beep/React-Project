@@ -17,7 +17,14 @@ export async function registration(e) {
     });
     const data = await api_url.json();
     console.log(data);
-    console.log(data.session);
+    if (data) setCookie(login, data.session, 30);
+}
+
+function setCookie(login, session, minutes) {
+    var d = new Date();
+    d.setTime(d.getTime() + (minutes * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = login + "=" + session + "; " + expires;
 }
 
 export async function login(e) {}
