@@ -7,6 +7,7 @@ class SigninPg extends React.Component {
     render() {
         return (
             <Form>
+                <h1>Вход</h1>
                 <Form.Group>
                     <Form.Control type="text" placeholder="login" />
                 </Form.Group>

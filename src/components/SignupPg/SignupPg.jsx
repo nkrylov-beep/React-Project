@@ -7,6 +7,7 @@ class SignupPg extends React.Component {
     render() {
         return (
             <Form>
+                <h1>Регистрация</h1>
                 <Form.Group>
                     <Form.Control type="text" placeholder="login" />
                 </Form.Group>
