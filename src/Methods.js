@@ -1,4 +1,4 @@
-import React from 'react';
+if (data) setCookie('session', data.session, 30);import React from 'react';
 
 
 export async function registration(e) {
@@ -17,7 +17,7 @@ export async function registration(e) {
     });
     const data = await api_url.json();
     console.log(data);
-    if (data) setCookie(login, data.session, 30);
+    if (data) setCookie('session', data.session, 30);
 }
 
 function setCookie(login, session, minutes) {
