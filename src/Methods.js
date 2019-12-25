@@ -1,4 +1,3 @@
-if (data) setCookie('session', data.session, 30);
 import React from 'react';
 
 
