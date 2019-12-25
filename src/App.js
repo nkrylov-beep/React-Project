@@ -6,13 +6,15 @@ import MainPg from './components/MainPg/MainPg';
 import SignupPg from './components/SignupPg/SignupPg';
 import SigninPg from './components/SigninPg/SigninPg';
 import { BrowserRouter, Route } from "react-router-dom";
-import {registration, login} from './Methods';
+import { registration, login } from './Methods';
+import { getMessages } from './components/Page/Content/Content';
 
 class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
                 <div>
+                    <script>getMessages</script>
                     <Header />
                     <div className="gap"></div>
                     <div className='wrapper'>

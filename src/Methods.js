@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 
 export async function registration(e) {
@@ -17,7 +18,10 @@ export async function registration(e) {
     });
     const data = await api_url.json();
     console.log(data);
-    if (data) setCookie('session', data.session, 30);
+    if (data) {
+        setCookie('session', data.session, 30);
+        window.location.assign('/page');
+    }
 }
 
 function setCookie(s, session, minutes) {
@@ -40,5 +44,8 @@ export async function login(e) {
     });
     const data = await api_url.json();
     console.log(data);
-    if (data) setCookie('session', data.session, 30);
+    if (data) {
+        setCookie('session', data.session, 30);
+        window.location.assign('/page');
+    }
 }
