@@ -17,9 +17,7 @@ class Form extends React.Component {
                     <div className={classes.gap}></div>
                     <input type="password" name='password' />
                     <div className={classes.gap}></div>
-                    <NavLink to='/page'>
-                        <button className={classes.button}>done</button>
-                    </NavLink>
+                    <button className={classes.button}>done</button>
                 </form>
             </div>
         );
