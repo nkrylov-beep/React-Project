@@ -1,4 +1,5 @@
-if (data) setCookie('session', data.session, 30);import React from 'react';
+if (data) setCookie('session', data.session, 30);
+import React from 'react';
 
 
 export async function registration(e) {
@@ -11,7 +12,7 @@ export async function registration(e) {
     const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/registration', {
         method: 'POST',
         headers: {
-           'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json;charset=utf-8'
         },
         body: `{\"new_nickname\":\"${name}\", \"new_login\":\"${login}\", \"new_password\": \"${password}\", \"new_repeat_password\": \"${password2}\"}`
     });
@@ -20,11 +21,25 @@ export async function registration(e) {
     if (data) setCookie('session', data.session, 30);
 }
 
-function setCookie(login, session, minutes) {
+function setCookie(s, session, minutes) {
     var d = new Date();
     d.setTime(d.getTime() + (minutes * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
-    document.cookie = login + "=" + session + "; " + expires;
+    document.cookie = s + "=" + session + "; " + expires;
 }
 
-export async function login(e) {}
+export async function login(e) {
+    e.preventDefault();
+    const login = e.target.elements.login.value;
+    const password = e.target.elements.password.value;
+    const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/authorization', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: `{\"login\":\"${login}\", \"password\": \"${password}\"}`
+    });
+    const data = await api_url.json();
+    console.log(data);
+    if (data) setCookie('session', data.session, 30);
+}
