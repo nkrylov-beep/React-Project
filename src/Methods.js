@@ -16,7 +16,8 @@ export async function registration(e) {
         body: `{\"new_nickname\":\"${name}\", \"new_login\":\"${login}\", \"new_password\": \"${password}\", \"new_repeat_password\": \"${password2}\"}`
     });
     const data = await api_url.json();
-    console.log("data");
+    console.log(data);
+    console.log(data.session);
 }
 
 export async function login(e) {}
