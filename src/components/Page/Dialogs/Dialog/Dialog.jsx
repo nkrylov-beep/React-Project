@@ -7,7 +7,7 @@ class Dialog extends React.Component {
         return (
             <div>
                 DIALOG
-        </div>
+            </div>
         );
     }
 }

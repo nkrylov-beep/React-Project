@@ -2,6 +2,8 @@ import React from 'react';
 import classes from './Content.module.css';
 
 
+let DUMMY_DATA = [
+]
 
 export async function getMessages() {
   console.log("111");
@@ -15,9 +17,6 @@ export async function getMessages() {
     DUMMY_DATA = data;
   }
 }
-
-let DUMMY_DATA = [
-]
 
 let chatID = "1";
 let lastID = "2";

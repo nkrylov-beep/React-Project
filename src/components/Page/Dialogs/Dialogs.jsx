@@ -4,33 +4,43 @@ import Dialog from './Dialog/Dialog';
 import AddDialog from './AddDialog/AddDialog';
 
 const DUMMY_DATA = [
-    {
-      dialogId: "dialog1",  
-      lastsenderId: "perborgen",
-      text: "who'll win you think?"
-    },
-    {
-      dialogId: "dialog2",  
-      lastsenderId: "janedoe",
-      text: "Brazil!"
-    }
-  ]
+  {
+    dialogId: "dialog1",
+    lastsenderId: "perborgen",
+    text: "who'll win you think?"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  }
+]
 
 class Dialogs extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-          dialogs: DUMMY_DATA
-        };
-      }
-    render() {
-        return (
-            <div className={classes.dialogs}>
-                <AddDialog />
-                <DialogList dialogs={this.state.dialogs} />
-            </div>
-        );
-    }
+  constructor() {
+    super();
+    this.state = {
+      dialogs: DUMMY_DATA
+    };
+  }
+  render() {
+    return (
+      <div className={classes.dialogs}>
+        <AddDialog />
+        <DialogList dialogs={this.state.dialogs} />
+      </div>
+    );
+  }
 }
 
 class DialogList extends React.Component {
@@ -44,7 +54,7 @@ class DialogList extends React.Component {
                 {dialog.dialogId}
               </div>
               <div>
-              <span className={classes.lastsenderId}>{dialog.lastsenderId}</span>: {dialog.text}
+                <span className={classes.lastsenderId}>{dialog.lastsenderId}</span>: {dialog.text}
               </div>
             </ul>
           )

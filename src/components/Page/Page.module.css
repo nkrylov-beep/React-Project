@@ -1,6 +1,6 @@
 .wrapper {
     display: grid;
-    grid-template-areas: ". dialogs content .";
+    grid-template-areas: ". info info ." ". dialogs content .";
     grid-template-columns: 20% 15% 45% 20%;
 }
 
@@ -10,4 +10,11 @@
 
 .dialogs {
     grid-area: dialogs;
+}
+
+.info {
+    grid-area: info;
+    padding-left: 50%;
+    background-color: rgb(165, 204, 207);
+    margin-bottom: 2px;
 }
