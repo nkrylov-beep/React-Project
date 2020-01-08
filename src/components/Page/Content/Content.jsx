@@ -3,6 +3,34 @@ import classes from './Content.module.css';
 
 
 let DUMMY_DATA = [
+  {
+    author: "dfhtrfh",
+    content: "dgh",
+  },
+  {
+    author: "dfhtrfh",
+    content: "dgh",
+  },
+  {
+    author: "dfhtrfh",
+    content: "dgh",
+  },
+  {
+    author: "dfhtrfh",
+    content: "dgh",
+  },
+  {
+    author: "dfhtrfh",
+    content: "dgh",
+  },
+  {
+    author: "dfhtrfh",
+    content: "dgh",
+  },
+  {
+    author: "dfhtrfh",
+    content: "dgh",
+  }
 ]
 
 export async function getMessages() {

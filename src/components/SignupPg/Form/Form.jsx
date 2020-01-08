@@ -3,6 +3,20 @@ import classes from './Form.module.css';
 import { NavLink } from "react-router-dom";
 
 class Form extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.state = {
+            status: ''
+        }
+    }
+    async handleClick(e) {
+        e.preventDefault();
+        this.setState({
+            status: await this.props.registration(e)
+        });
+        console.log(this.state.status);
+    }
     render() {
         return (
             <div className={classes.wrapper}>
@@ -16,7 +30,7 @@ class Form extends React.Component {
                     <div className={classes.passwordInscr2}><p className={classes.p}>repeat password</p></div>
                     <div className={classes.gap2}></div>
                 </div>
-                <form className={classes.form} onSubmit={this.props.registration}>
+                <form className={classes.form} onSubmit={this.handleClick}>
                     <input type='text' name='name' />
                     <div className={classes.gap}></div>
                     <input type='text' name='login' />
@@ -25,7 +39,8 @@ class Form extends React.Component {
                     <div className={classes.gap}></div>
                     <input type="password" name='password2' />
                     <div className={classes.gap}></div>
-                        <button className={classes.button}>done</button>
+                    <button className={classes.button}>done</button>
+                    <div className={classes.status}>{this.state.status}</div>
                 </form>
             </div>
         );
