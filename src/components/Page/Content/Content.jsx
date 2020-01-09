@@ -51,36 +51,54 @@ export default class Content extends React.Component {
       messages: DUMMY_DATA
     };
   }
+  refreshMessageList = (message) => {
+    DUMMY_DATA.push(message)
+    this.setState({
+      messages: DUMMY_DATA
+    });
+  }
   render() {
     return (
       <div className={classes.content}>
         <MessageList messages={this.state.messages} />
-        <SendMessageForm />
+        <SendMessageForm onRefreshMessageList={this.refreshMessageList} />
       </div>
     )
   }
 }
 
 class MessageList extends React.Component {
+  scrollToBottom = () => {
+    this.el.scrollIntoView({ behavior: "smooth" });
+  }
 
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
   render() {
     refreshMessages();
     return (
-      <ul className={classes.messagelist}>
+      <div ref={el => { this.el = el; }}>
+        <ul className={classes.messagelist}>
 
-        {this.props.messages.map(message => {
-          return (
-            <li key={message.id} className={classes.message}>
-              <div>
-                {message.author}
-              </div>
-              <div>
-                {message.text}
-              </div>
-            </li>
-          )
-        })}
-      </ul>
+          {this.props.messages.map(message => {
+            return (
+              <li key={message.id} className={classes.message}>
+                <div>
+                  {message.author}
+                </div>
+                <div>
+                  {message.text}
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     )
   }
 }
@@ -97,7 +115,7 @@ class SendMessageForm extends React.Component {
 
   handleChange(e) {
     this.setState({
-      message: e.target.value 
+      message: e.target.value
     })
     console.log("change")
   }
@@ -105,9 +123,9 @@ class SendMessageForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.setState({
-      message: '',
-      messages: DUMMY_DATA.push({ author: "Alex", text: (this.state.message) })
+      message: ''
     })
+    this.props.onRefreshMessageList({ author: "Alex", text: (this.state.message) })
     console.log("submit")
   }
 
