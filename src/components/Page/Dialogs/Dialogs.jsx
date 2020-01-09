@@ -23,6 +23,36 @@ const DUMMY_DATA = [
     dialogId: "dialog2",
     lastsenderId: "janedoe",
     text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
+  },
+  {
+    dialogId: "dialog2",
+    lastsenderId: "janedoe",
+    text: "Brazil!"
   }
 ]
 

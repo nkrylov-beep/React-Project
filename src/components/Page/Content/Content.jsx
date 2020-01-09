@@ -5,31 +5,15 @@ import classes from './Content.module.css';
 let DUMMY_DATA = [
   {
     author: "dfhtrfh",
-    content: "dgh",
+    text: "dgh",
   },
   {
     author: "dfhtrfh",
-    content: "dgh",
+    text: "dgh",
   },
   {
     author: "dfhtrfh",
-    content: "dgh",
-  },
-  {
-    author: "dfhtrfh",
-    content: "dgh",
-  },
-  {
-    author: "dfhtrfh",
-    content: "dgh",
-  },
-  {
-    author: "dfhtrfh",
-    content: "dgh",
-  },
-  {
-    author: "dfhtrfh",
-    content: "dgh",
+    text: "dgh",
   }
 ]
 
@@ -41,8 +25,10 @@ export async function getMessages() {
   });
   const data = await api_url.json();
   console.log(data);
-  if (data) {
+  if (Array.isArray(data)) {
     DUMMY_DATA = data;
+  } else {
+
   }
 }
 
@@ -51,8 +37,8 @@ let lastID = "2";
 
 
 async function refreshMessages() {
-    getMessages();
-    setTimeout(refreshMessages, 5000);
+  getMessages();
+  setTimeout(refreshMessages, 5000);
 }
 
 
@@ -76,12 +62,12 @@ export default class Content extends React.Component {
 }
 
 class MessageList extends React.Component {
-  
+
   render() {
     refreshMessages();
     return (
       <ul className={classes.messagelist}>
-       
+
         {this.props.messages.map(message => {
           return (
             <li key={message.id} className={classes.message}>
@@ -89,7 +75,7 @@ class MessageList extends React.Component {
                 {message.author}
               </div>
               <div>
-                {message.content}
+                {message.text}
               </div>
             </li>
           )
@@ -111,16 +97,18 @@ class SendMessageForm extends React.Component {
 
   handleChange(e) {
     this.setState({
-      message: e.target.value
+      message: e.target.value 
     })
+    console.log("change")
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    DUMMY_DATA.push({ author: "Alex", content: (this.state.message) })
     this.setState({
-      message: ''
+      message: '',
+      messages: DUMMY_DATA.push({ author: "Alex", text: (this.state.message) })
     })
+    console.log("submit")
   }
 
   render() {
