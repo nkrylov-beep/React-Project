@@ -65,3 +65,7 @@
 .doneBtn {
     grid-area: done;
 }
+
+.status {
+    color: red;
+}
