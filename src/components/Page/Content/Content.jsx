@@ -2,21 +2,6 @@ import React from 'react';
 import classes from './Content.module.css';
 
 
-let DUMMY_DATA = [
-  {
-    author: "dfhtrfh",
-    text: "dgh",
-  },
-  {
-    author: "dfhtrfh",
-    text: "dgh",
-  },
-  {
-    author: "dfhtrfh",
-    text: "dgh",
-  }
-]
-
 export async function getMessages() {
   console.log("111");
   const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/chats/getnewmessages', {
@@ -26,7 +11,7 @@ export async function getMessages() {
   const data = await api_url.json();
   console.log(data);
   if (Array.isArray(data)) {
-    DUMMY_DATA = data;
+    /*DUMMY_DATA = data;*/
   } else {
 
   }
@@ -45,16 +30,16 @@ async function refreshMessages() {
 
 
 export default class Content extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      messages: DUMMY_DATA
+      messages: this.props.msgs
     };
   }
   refreshMessageList = (message) => {
-    DUMMY_DATA.push(message)
+    this.state.messages.push(message)
     this.setState({
-      messages: DUMMY_DATA
+      messages: this.state.messages
     });
   }
   render() {
@@ -117,7 +102,6 @@ class SendMessageForm extends React.Component {
     this.setState({
       message: e.target.value
     })
-    console.log("change")
   }
 
   handleSubmit(e) {
@@ -126,7 +110,6 @@ class SendMessageForm extends React.Component {
       message: ''
     })
     this.props.onRefreshMessageList({ author: "Alex", text: (this.state.message) })
-    console.log("submit")
   }
 
   render() {

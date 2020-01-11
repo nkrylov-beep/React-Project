@@ -1,0 +1,46 @@
+.container {
+    display: grid;
+    grid-template-columns: 0.6fr 1.4fr 1.3fr 0.7fr;
+    grid-template-rows: 0.7fr 1.2fr 1.2fr 1.2fr 0.7fr;
+    grid-template-areas: ". . . ." ". text1 text1 ." ". input but ." ". text2 text2 ." ". . . .";
+    height: 100%;
+    color: rgb(28, 28, 80);
+}
+
+.text1 {
+    grid-area: text1;
+}
+
+.text2 {
+    grid-area: text2;
+}
+
+.input {
+    grid-area: input;
+}
+
+.but {
+    grid-area: but;
+}
+
+.btn {
+    text-align: center;
+    display: block;
+    font-family: arial;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(70, 87, 104);
+    width: 50%;
+    cursor: default;
+    user-select: none;
+}
+
+.btn:hover {
+    background-color: rgb(114, 145, 180);
+}
+
+.btn:active {
+    background-color: rgb(173, 160, 247);
+}

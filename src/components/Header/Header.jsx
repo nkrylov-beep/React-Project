@@ -11,7 +11,7 @@ class Header extends React.Component {
                 <Navbar.Brand>
                     <NavLink className={classes.link} to='/'>
                         Nazvanie
-            </NavLink>
+                    </NavLink>
                 </Navbar.Brand>
                 <Nav className="mr-auto">
                 </Nav>

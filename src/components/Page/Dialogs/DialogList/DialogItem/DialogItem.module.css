@@ -1,0 +1,23 @@
+.dialog {
+    background-color: mintcream;
+    border-bottom: 1px solid rgb(99, 156, 170);
+}
+
+.dialog:hover {
+    background-color: rgb(214, 215, 218);
+    border-bottom: 1px solid rgb(76, 98, 196);
+}
+
+.dialog div:nth-child(1) {
+    font-size: 20px;
+    color: black;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+
+.lastsenderId {
+    font-size: 15px;
+    color: blue;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
