@@ -5,10 +5,6 @@ class AddDialogPg extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-        this.state = {
-            status: -1,
-            inscr: "Add Dialog"
-        }
     }
     handleClick = () => {
         this.props.onCreateDlg(this.input.value);

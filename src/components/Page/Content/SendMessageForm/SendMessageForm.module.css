@@ -1,0 +1,15 @@
+.sendmessageform {
+    background: var(--send-message-form);
+    display: flex;
+    box-sizing: border-box;
+    height: 60px;
+}
+
+.sendmessageform input {
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    margin: 0;
+    background: var(--send-message-form);
+    font-weight: 200;
+}

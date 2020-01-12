@@ -10,26 +10,29 @@ class Page extends React.Component {
         super();
         this.state = {
             name: "Inokentii",
-            status: 0,
+            addDlgBtnInscr: "Создать диалог",
             messages: [
                 {
                     author: "dfhtrfh",
                     text: "dgh",
+                    time: "12 Января 04:13"
                 },
                 {
                     author: "dfhtrfh",
                     text: "dgh",
+                    time: "12 Января 04:13"
                 },
                 {
                     author: "dfhtrfh",
                     text: "dgh",
+                    time: "12 Января 04:13"
                 }
             ],
             dialogs: [
                 {
                     dialogId: "dialog1",
                     lastsenderId: "perborgen",
-                    text: "who'll win you think?"
+                    text: "who'll win you think?",
                 },
                 {
                     dialogId: "dialog2",
@@ -75,8 +78,18 @@ class Page extends React.Component {
         };
     }
     choosingDialog = (dialogValue) => {
+        console.log(this.state.dialogId)
+        console.log(dialogValue)
+        if (dialogValue == -1 && this.state.dialogId == dialogValue) {
+            this.state.addDlgBtnInscr = "Создать диалог";
+            dialogValue = -2;
+        }
+        if (dialogValue == -1 && this.state.dialogId != dialogValue) {
+            this.state.addDlgBtnInscr = "Отмена";
+        }
         this.setState({
-            status: dialogValue
+            dialogId: dialogValue,
+            addDlgBtnInscr: this.state.addDlgBtnInscr
         })
     }
     createDialog = (dlgName) => {
@@ -86,19 +99,20 @@ class Page extends React.Component {
             text: "perfocards!!!"
         });
         this.setState({
+            dialogId: -2,
             dialogs: this.state.dialogs,
-            status: 0
+            addDlgBtnInscr: "Создать диалог"
         })
     }
     render() {
         return (
             <div className={classes.wrapper}>
                 <div className={classes.info}>user info: name {this.state.name}</div>
-                <div className={classes.dialogs}><Dialogs onChoosingDialog={this.choosingDialog} dlgs={this.state.dialogs} status={this.state.status}/></div>
+                <div className={classes.dialogs}><Dialogs onChoosingDialog={this.choosingDialog} dlgs={this.state.dialogs} inscr={this.state.addDlgBtnInscr} /></div>
                 <div className={classes.content}>
-                    {this.state.status == -1 && <AddDialogPg onCreateDlg={this.createDialog} />}
-                    {this.state.status == null && <div />}
-                    {this.state.status > -1 && <Content msgs={this.state.messages} />}
+                    {this.state.dialogId == -1 && <AddDialogPg onCreateDlg={this.createDialog} />}
+                    {this.state.dialogId == -2 && <div />}
+                    {this.state.dialogId > 0 && <Content msgs={this.state.messages} />}
                 </div>
             </div>
         );

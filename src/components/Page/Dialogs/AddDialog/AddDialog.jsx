@@ -6,33 +6,16 @@ class AddDialog extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-        let inscr;
-        if (this.props.status == -1) inscr = "Cancel"
-        else inscr = "Add Dialog"
+        let text;
         this.state = {
-            status: this.props.status,
-            inscr: inscr
         }
     }
     handleClick() {
-        if (this.state.status == -1) {
-            this.setState({
-                status: null,
-                inscr: "Cancel"
-            });
-            this.props.onChoosingDialog(this.state.status)
-        }
-        else {
-            this.setState({
-                status: -1,
-                inscr: "Add Dialog"
-            });
-            this.props.onChoosingDialog(this.state.status)
-        }
+        this.props.onChoosingDialog(-1);
     }
     render() {
         return (
-            <div className={classes.addDialBtn} onClick={this.handleClick}>{this.state.inscr}</div>
+            <div className={classes.addDialBtn} onClick={this.handleClick}>{this.props.inscr}</div>
         );
     }
 }

@@ -14,7 +14,7 @@ class Dialogs extends React.Component {
   render() {
     return (
       <div className={classes.dialogs}>
-        <AddDialog onChoosingDialog={this.props.onChoosingDialog} status={this.props.status}/>
+        <AddDialog onChoosingDialog={this.props.onChoosingDialog} inscr={this.props.inscr}/>
         <DialogList dialogs={this.state.dialogs} onChoosingDialog={this.props.onChoosingDialog} />
       </div>
     );
