@@ -12,10 +12,11 @@ class Form extends React.Component {
     }
     async handleClick(e) {
         e.preventDefault();
-        this.setState({
-            status: await this.props.login(e)
-        });
-        console.log(this.state.status);
+        const data = await this.props.login(e);
+        if (!data.id)
+            this.setState({
+                status: data
+            });
     }
     render() {
         return (
