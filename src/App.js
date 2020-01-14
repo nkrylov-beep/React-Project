@@ -26,7 +26,7 @@ class App extends React.Component {
     render() {
         return (
             <Router history={this.customHistory}>
-                <Header />
+                <Header isAuthorized={document.cookie} onExit={this.onExit} />
                 <div className='wrapper'>
                     <PrivateRouteComponent path="/page" render={props => <Page />} isAuthenticated={document.cookie} redirectPath="/" />
                     <PrivateRouteComponent path="/login" render={props => <SigninPg login={this.signin} />} isAuthenticated={!document.cookie} redirectPath="/page" />
@@ -34,7 +34,7 @@ class App extends React.Component {
                     <Route path="/signup" render={props => <SignupPg registration={this.signup} />} />
                     <Route path="/login" render={props => <SigninPg login={this.signin} />} />
                     <Route path="/page" render={props => <Page />} />
-                    <Route exact path="/" component={MainPg} />
+                    <Route exact path="/" render={props => <MainPg isAuthorized={document.cookie}/>} />
                 </div>
             </Router >
         );
@@ -66,6 +66,20 @@ class App extends React.Component {
             this.customHistory.push('/page');
         }
         return data;
+    }
+    onExit = () => {
+        var cookie_date = new Date();
+        cookie_date.setTime(cookie_date.getTime() - 1);
+        console.log(document.cookie += "=; expires=" + cookie_date.toGMTString());
+        document.cookie = document.cookie.split("=")[1] += "=; expires=" + cookie_date.toGMTString();
+        this.setState({
+            id: undefined,
+            login: undefined,
+            nickname: undefined,
+            chat_list: undefined,
+            contacts: undefined
+        });
+        this.customHistory.push('/');
     }
 }
 

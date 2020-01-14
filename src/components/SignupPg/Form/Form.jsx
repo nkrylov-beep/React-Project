@@ -22,13 +22,13 @@ class Form extends React.Component {
         return (
             <div className={classes.wrapper}>
                 <div className={classes.inscr}>
-                    <div className={classes.nickInscr}><p className={classes.p}>laxname</p></div>
+                    <div className={classes.nickInscr}><p className={classes.p}>имя:</p></div>
                     <div className={classes.gap2}></div>
-                    <div className={classes.loginInscr}><p className={classes.p}>login</p></div>
+                    <div className={classes.loginInscr}><p className={classes.p}>логин:</p></div>
                     <div className={classes.gap2}></div>
-                    <div className={classes.passwordInscr}><p className={classes.p}>password</p></div>
+                    <div className={classes.passwordInscr}><p className={classes.p}>пароль:</p></div>
                     <div className={classes.gap2}></div>
-                    <div className={classes.passwordInscr2}><p className={classes.p}>repeat password</p></div>
+                    <div className={classes.passwordInscr2}><p className={classes.p}>повторите пароль:</p></div>
                     <div className={classes.gap2}></div>
                 </div>
                 <form className={classes.form} onSubmit={this.handleClick}>
@@ -40,7 +40,7 @@ class Form extends React.Component {
                     <div className={classes.gap}></div>
                     <input type="password" name='password2' />
                     <div className={classes.gap}></div>
-                    <button className={classes.button}>done</button>
+                    <button className={classes.button}>готово</button>
                     <div className={classes.status}>{this.state.status}</div>
                 </form>
             </div>

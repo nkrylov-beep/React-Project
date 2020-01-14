@@ -7,14 +7,17 @@ class MainPg extends React.Component {
         return (
             <div className={classes.container}>
                 <div className={classes.loginBtn}>
-                    <NavLink to='/login'>
-                        <button className={classes.button}>login</button>
-                    </NavLink>
+                    {!this.props.isAuthorized && <NavLink to='/login'>
+                        <button className={classes.button}>Авторизоваться</button>
+                    </NavLink>}
+                    {this.props.isAuthorized && <NavLink to='/page'>
+                        <button className={classes.button}>К сообщениям</button>
+                    </NavLink>}
                 </div>
                 <div className={classes.signupBtn}>
-                    <NavLink to='/signup'>
-                        <button className={classes.button}>sign up</button>
-                    </NavLink>
+                    {!this.props.isAuthorized && <NavLink to='/signup'>
+                        <button className={classes.button}>Зарегистрироваться</button>
+                    </NavLink>}
                 </div>
                 <div className={classes.info}>ТИПА ИНФА О САЙТЕ</div>
             </div>
