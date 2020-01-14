@@ -21,7 +21,7 @@ class Header extends React.Component {
                     </NavLink>
                 </div>
                 <div className={classes.userName}>
-                    {this.props.isAuthorized && "Пользователь: Инокентий"}
+                    {this.props.isAuthorized && `Пользователь: ${this.props.nickname}`}
                 </div>
                 <div className={classes.exitButton} onClick={this.handleClick}>
                     {this.props.isAuthorized && <div className={classes.link} to='/'>

@@ -6,10 +6,9 @@ import AddDialogPg from './AddDialogPg/AddDialogPg';
 
 
 class Page extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            name: "Inokentii",
             addDlgBtnInscr: "Создать диалог",
             messages: [
                 {
@@ -77,9 +76,11 @@ class Page extends React.Component {
             ]
         };
     }
+    componentDidMount() {
+        const data = this.props.refreshUserData;
+        console.log(data);
+    }
     choosingDialog = (dialogValue) => {
-        console.log(this.state.dialogId)
-        console.log(dialogValue)
         if (dialogValue == -1 && this.state.dialogId == dialogValue) {
             this.state.addDlgBtnInscr = "Создать диалог";
             dialogValue = -2;
@@ -107,7 +108,7 @@ class Page extends React.Component {
     render() {
         return (
             <div className={classes.wrapper}>
-                <div className={classes.info}>user info: name {this.state.name}</div>
+                <div className={classes.info}> Список диалогов пользователя {this.props.nickname}</div>
                 <div className={classes.dialogs}><Dialogs onChoosingDialog={this.choosingDialog} dlgs={this.state.dialogs} inscr={this.state.addDlgBtnInscr} /></div>
                 <div className={classes.content}>
                     {this.state.dialogId == -1 && <AddDialogPg onCreateDlg={this.createDialog} />}
