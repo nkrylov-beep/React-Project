@@ -31,8 +31,8 @@
     grid-column: 2;
     position: relative;
     left: 50%;
-    top: 50%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .info2 {
