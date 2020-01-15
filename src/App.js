@@ -19,8 +19,63 @@ class App extends React.Component {
             id: null,
             login: null,
             nickname: null,
-            chat_list: null,
-            contacts: null
+            contacts: null,
+            dialogId: -2,
+            addDlgBtnInscr: "Добавить диалог",
+            cur_messages: [
+                {
+                    author: "dfhtrfh",
+                    text: "dgh",
+                    time: "12 Января 04:13"
+                },
+                {
+                    author: "dfhtrfh",
+                    text: "dgh",
+                    time: "12 Января 04:13"
+                },
+                {
+                    author: "dfhtrfh",
+                    text: "dgh",
+                    time: "12 Января 04:13"
+                }
+            ],
+            chat_list: [
+                {
+                    dialogId: "dialog1",
+                    lastsenderId: "perborgen",
+                    text: "who'll win you think?",
+                },
+                {
+                    dialogId: "dialog2",
+                    lastsenderId: "janedoe",
+                    text: "Brazil!"
+                },
+                {
+                    dialogId: "dialog2",
+                    lastsenderId: "janedoe",
+                    text: "Brazil!"
+                },
+                {
+                    dialogId: "dialog2",
+                    lastsenderId: "janedoe",
+                    text: "Brazil!"
+                },
+                {
+                    dialogId: "dialog2",
+                    lastsenderId: "janedoe",
+                    text: "Brazil!"
+                },
+                {
+                    dialogId: "dialog2",
+                    lastsenderId: "janedoe",
+                    text: "Brazil!"
+                },
+                {
+                    dialogId: "dialog2",
+                    lastsenderId: "janedoe",
+                    text: "Brazil!"
+                }
+            ]
         };
     }
     render() {
@@ -29,17 +84,29 @@ class App extends React.Component {
                 <Header isAuthorized={document.cookie} onExit={this.onExit} nickname={this.state.nickname} />
                 <div className='wrapper'>
                     <PrivateRouteComponent path="/page" render={props => <Page
-                        getUserData={this.getUserData}
+                        refreshUserData={this.getUserData}
                         nickname={this.state.nickname}
+                        chat_list={this.state.chat_list}
+                        cur_messages={this.state.cur_messages}
+                        inscr={this.state.addDlgBtnInscr}
+                        onChoosingDialog={this.onChoosingDialog}
+                        dialogId={this.state.dialogId}
+                        createDialog={this.createDialog}
                     />} isAuthenticated={document.cookie} redirectPath="/" />
                     <PrivateRouteComponent path="/login" render={props => <SigninPg login={this.signin} />} isAuthenticated={!document.cookie} redirectPath="/page" />
                     <PrivateRouteComponent path="/signup" render={props => <SignupPg registration={this.signup} />} isAuthenticated={!document.cookie} redirectPath="/page" />
                     <Route path="/signup" render={props => <SignupPg registration={this.signup} />} />
                     <Route path="/login" render={props => <SigninPg login={this.signin} />} />
                     <Route path="/page" render={props => <Page
-                        refreshUserData={this.refreshUserData} 
+                        refreshUserData={this.refreshUserData}
                         nickname={this.state.nickname}
-                        />} />
+                        chat_list={this.state.chat_list}
+                        cur_messages={this.state.cur_messages}
+                        inscr={this.state.addDlgBtnInscr}
+                        onChoosingDialog={this.onChoosingDialog}
+                        dialogId={this.state.dialogId}
+                        createDialog={this.createDialog}
+                    />} />
                     <Route exact path="/" render={props => <MainPg isAuthorized={document.cookie} />} />
                 </div>
             </Router >
@@ -52,7 +119,7 @@ class App extends React.Component {
                 id: data.id,
                 login: data.login,
                 nickname: data.nickname,
-                chat_list: data.chat_list,
+                chat_list: this.state.chat_list,
                 contacts: data.contacts
             });
         }
@@ -99,6 +166,33 @@ class App extends React.Component {
             contacts: null
         });
         this.customHistory.push('/');
+    }
+    onChoosingDialog = (dialogValue) => {
+        if (dialogValue == -1 && this.state.dialogId == dialogValue) {
+            this.state.addDlgBtnInscr = "Добавить диалог";
+            dialogValue = -2;
+        }
+        if (dialogValue == -1 && this.state.dialogId != dialogValue) {
+            this.state.addDlgBtnInscr = "Отмена";
+        }
+        this.setState({
+            dialogId: dialogValue,
+            addDlgBtnInscr: this.state.addDlgBtnInscr
+        });
+        return this.state.dialogId;
+    }
+    createDialog = (dlgName) => {
+        this.state.chat_list.unshift({
+            dialogId: dlgName,
+            lastsenderId: "Vasilii",
+            text: "perfocards!!!"
+        });
+        this.setState({
+            dialogId: -2,
+            chat_list: this.state.dialogs,
+            addDlgBtnInscr: "Создать диалог"
+        })
+        console.log(this.state.chat_list)
     }
 }
 

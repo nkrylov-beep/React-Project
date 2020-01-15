@@ -11,7 +11,6 @@ class DialogItem extends React.Component {
         }
     }
     handleClick(e) {
-        e.preventDefault();
         this.props.onChoosingDialog(this.state.status)
     }
     render() {
