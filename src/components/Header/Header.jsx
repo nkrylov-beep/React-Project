@@ -15,11 +15,10 @@ class Header extends React.Component {
     render() {
         return (
             <div className={classes.header}>
-                <div className={classes.siteName}>
-                    <NavLink className={classes.link} to='/'>
-                        HΞHMΔΛ
-                    </NavLink>
-                </div>
+                <img src="./favicon.ico" alt="logo"/>
+                <NavLink className={classes.link} to='/'>
+                    HΞHMΔΛ
+                </NavLink>
                 <div className={classes.userName}>
                     {this.props.isAuthorized && "Пользователь: Инокентий"}
                 </div>
