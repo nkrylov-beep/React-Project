@@ -19,7 +19,8 @@ class MainPg extends React.Component {
                         <button className={classes.button}>Зарегистрироваться</button>
                     </NavLink>}
                 </div>
-                <div className={classes.info}>ТИПА ИНФА О САЙТЕ</div>
+                <div className={classes.info1}>Made with &#9829;</div>
+                <div className={classes.info2}>by our team</div>
             </div>
         );
     }

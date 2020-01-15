@@ -17,7 +17,7 @@ class Header extends React.Component {
             <div className={classes.header}>
                 <div className={classes.siteName}>
                     <NavLink className={classes.link} to='/'>
-                        Название
+                        HΞHMΔΛ
                     </NavLink>
                 </div>
                 <div className={classes.userName}>
