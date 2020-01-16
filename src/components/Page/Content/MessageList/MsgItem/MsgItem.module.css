@@ -1,0 +1,18 @@
+.message {
+    margin: 15px 0;
+}
+
+.message div:nth-child(1) {
+    font-size: 11px;
+    color: black;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+
+.message div:nth-child(2) {
+    background: rgb(250, 250, 97);
+    color: rgb(66, 0, 189);
+    display: inline;
+    padding: 4px 12px;
+    border-radius: 8px;
+}

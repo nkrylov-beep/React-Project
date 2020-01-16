@@ -1,0 +1,48 @@
+.link {
+    color: white;
+    cursor: pointer;
+    font-size: 150%;
+    margin-top: 5px;
+    border-left: 0px;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: rgb(132, 196, 226);
+}
+
+.header {
+    height: 50px;
+    margin-bottom: 5px;
+    background-color: rgb(37, 51, 63);
+    display: grid;
+    grid-template-areas: ". dialogs content .";
+    grid-template-columns: 2fr 20fr 6fr 2fr;
+    grid-template-areas: "siteName . userName button";
+    color: white;
+}
+
+img {
+    width: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 25px;
+    border-radius: 5px;
+}
+
+.userName {
+    display: inline-block;
+    grid-area: userName;
+    font-size: 100%;
+    margin-top: 11px;
+}
+
+.exitButton {
+    grid-area: button;
+    font-size: 80%;
+    margin-top: 3px;
+}
+
+.p {
+    color: white;
+}

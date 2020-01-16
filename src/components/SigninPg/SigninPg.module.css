@@ -1,6 +1,49 @@
-Form {
-    margin: auto;
-    max-width: 300px;
-    vertical-align: center;
-    padding-top: 100px;
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50px 150px 50px 170px;
+    grid-template-areas: ". . . button" ". . inscr ." ". . . ." ". form form ." ". . done .";
+    color: rgb(0, 37, 204);
+    ;
+}
+
+.inscription {
+    grid-area: inscr;
+    grid-row: 3;
+    grid-column: 3;
+    text-align: center;
+}
+
+.form {
+    grid-area: form;
+    text-align: center;
+    grid-row: 4;
+    grid-column: 3;
+}
+
+.p2 {
+    font-size: 130%;
+}
+
+.signupBtn {
+    grid-area: button;
+    grid-column: 5;
+    text-align: center;
+}
+
+.button {
+    color: white;
+    background-color: rgb(52, 104, 156);
+    padding: .7em 1.5em;
+    outline: none;
+    border: 2px solid;
+}
+
+.button:hover {
+    background: white;
+    color: rgb(52, 104, 156);
+}
+
+.doneBtn {
+    grid-area: done;
 }

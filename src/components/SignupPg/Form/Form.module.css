@@ -9,7 +9,7 @@
 }
 
 .gap2 {
-    height: 22px;
+    height: 50px;
 }
 
 .form {
@@ -41,12 +41,10 @@
 }
 
 .p {
-    font-family: cursive;
     line-height: 0em;
 }
 
 .p2 {
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 130%;
 }
 
@@ -65,4 +63,8 @@
 
 .doneBtn {
     grid-area: done;
+}
+
+.status {
+    color: red;
 }

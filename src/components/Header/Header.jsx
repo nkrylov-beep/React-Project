@@ -1,19 +1,33 @@
 import React from 'react';
-import {Navbar, Nav, Button} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, Button } from "react-bootstrap";
+import classes from './Header.module.css';
+import { NavLink } from "react-router-dom";
 
 class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick = () => {
+        this.props.onExit();
+    }
     render() {
         return (
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand>MonoChrome</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Button variant="outline-dark" href={'/donate'}>Donate</Button>
-                </Nav>
-                <Nav>
-                    <Button variant="dark" href={'/login'}>Login</Button>
-                    <Button variant="dark" href={'/signup'}>SignUp</Button>
-                </Nav>
-            </Navbar>
+            <div className={classes.header}>
+                <img src="./favicon.ico" alt="logo" />
+                <NavLink className={classes.link} to='/'>
+                    HΞHMΔΛ
+                </NavLink>
+                <div className={classes.userName}>
+                    {document.cookie && `Пользователь: ${this.props.nickname}`}
+                </div>
+                <div className={classes.exitButton}>
+                    {document.cookie && <div className={classes.link} onClick={this.handleClick}>
+                        Выйти
+                    </div>}
+                </div>
+            </div >
         );
     }
 }

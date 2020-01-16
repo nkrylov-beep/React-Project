@@ -3,25 +3,31 @@ import classes from './Form.module.css';
 import { NavLink } from "react-router-dom";
 
 class Form extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        this.state = {
+            status: ''
+        }
+    }
+    async handleClick(e) {
+        e.preventDefault();
+        const data = await this.props.login(e);
+        if (!data.id)
+            this.setState({
+                status: data
+            });
+    }
     render() {
         return (
-            <div className={classes.wrapper}>
-                <div className={classes.inscr}>
-                    <div className={classes.loginInscr}><p className={classes.p}>login</p></div>
-                    <div className={classes.gap2}></div>
-                    <div className={classes.passwordInscr}><p className={classes.p}>password</p></div>
-                    <div className={classes.gap2}></div>
-                </div>
-                <form className={classes.form} onSubmit={this.props.login}>
-                    <input type='text' name='login' />
-                    <div className={classes.gap}></div>
-                    <input type="password" name='password' />
-                    <div className={classes.gap}></div>
-                    <NavLink to='/page'>
-                        <button className={classes.button}>done</button>
-                    </NavLink>
-                </form>
-            </div>
+            <form className={classes.form} onSubmit={this.handleClick}>
+                <input type='text' name='login' placeholder='Логин'/>
+                <div className={classes.gap}></div>
+                <input type="password" name='password' placeholder='Пароль'/>
+                <div className={classes.gap}></div>
+                <button className={classes.button}>готово</button>
+                <div className={classes.status}>{this.state.status}</div>
+            </form>
         );
     }
 }

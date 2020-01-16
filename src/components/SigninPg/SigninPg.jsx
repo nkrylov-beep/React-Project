@@ -6,18 +6,16 @@ class SigninPg extends React.Component {
 
     render() {
         return (
-            <Form>
-                <Form.Group>
-                    <Form.Control type="email" placeholder="Enter email" />
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Button className="btn-danger" type="submit">
-                    Submit
-                </Button>
-            </Form>
+            <div className={classes.container}>
+                <div className={classes.inscription}><p className={classes.p2}>Авторизация</p></div>
+                <div className={classes.form}><Form login={this.props.login}/></div>
+                <div className={classes.loginBtn}></div>
+                <div className={classes.signupBtn}>
+                <NavLink to='/signup'>
+                    <button className={classes.button}>Зарегистрироваться</button>
+                </NavLink>
+                </div>
+            </div>
         );
     }
 }

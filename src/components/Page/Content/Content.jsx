@@ -1,90 +1,30 @@
 import React from 'react';
 import classes from './Content.module.css';
+import MessageList from './MessageList/MessageList';
+import SendMessageForm from './SendMessageForm/SendMessageForm';
 
-let DUMMY_DATA = [
-  {
-    senderId: "perborgen",
-    text: "who'll win?"
-  },
-  {
-    senderId: "janedoe",
-    text: "Brazil!"
-  }
-]
 
-export default class Content extends React.Component {
-  constructor() {
-    super();
+class Content extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      messages: DUMMY_DATA
+      messages: this.props.msgs
     };
+  }
+  refreshMessageList = (message) => {
+    this.state.messages.push(message)
+    this.setState({
+      messages: this.state.messages
+    });
   }
   render() {
     return (
       <div className={classes.content}>
         <MessageList messages={this.state.messages} />
-        <SendMessageForm />
+        <SendMessageForm onRefreshMessageList={this.refreshMessageList} />
       </div>
     )
   }
 }
 
-class MessageList extends React.Component {
-  render() {
-    return (
-      <ul className={classes.messagelist}>
-        {this.props.messages.map(message => {
-          return (
-            <li key={message.id} className={classes.message}>
-              <div>
-                {message.senderId}
-              </div>
-              <div>
-                {message.text}
-              </div>
-            </li>
-          )
-        })}
-      </ul>
-    )
-  }
-}
-
-class SendMessageForm extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      message: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleChange(e) {
-    this.setState({
-      message: e.target.value
-    })
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    DUMMY_DATA.push({senderId: "Alex", text: (this.state.message)})
-    this.setState({
-        message: ''
-    })
-  }
-
-  render() {
-    return (
-      <form
-        onSubmit={this.handleSubmit}
-        className={classes.sendmessageform}>
-        <input
-          onChange={this.handleChange}
-          value={this.state.message}
-          placeholder="Type your message and hit ENTER"
-          type="text" />
-      </form>
-    )
-  }
-}
+export default Content;
