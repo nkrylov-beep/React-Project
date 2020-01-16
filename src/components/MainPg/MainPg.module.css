@@ -1,9 +1,77 @@
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 200px 170px 170px;
+    grid-template-rows: 170px 170px 170px;
     grid-template-areas: ". . . ." ". loginBtn signupBtn ." ". . . ." ". info info .";
     color: rgb(52, 104, 156);
+    align-items: center;
+}
+
+.kaomoji1, .kaomoji2, .kaomoji3, .kaomoji4, .kaomoji5, .kaomoji6, .kaomoji7, .kaomoji8, .kaomoji9, .kaomoji10,
+.kaomoji11, .kaomoji12 {
+    color: lightgrey;
+    font-size: 200%;
+    text-align: center;
+}
+
+.kaomoji1 {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.kaomoji2 {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.kaomoji3 {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.kaomoji4 {
+    grid-row: 1;
+    grid-column: 4;
+}
+
+.kaomoji5 {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.kaomoji6 {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.kaomoji7 {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.kaomoji8 {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+.kaomoji9 {
+    grid-row: 4;
+    grid-column: 1;
+}
+
+.kaomoji10 {
+    grid-row: 4;
+    grid-column: 2;
+}
+
+.kaomoji11 {
+    grid-row: 4;
+    grid-column: 3;
+}
+
+.kaomoji12 {
+    grid-row: 4;
+    grid-column: 4;
 }
 
 .loginBtn {
