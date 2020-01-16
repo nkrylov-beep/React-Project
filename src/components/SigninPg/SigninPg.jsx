@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './SigninPg.module.css';
-import {Button, Form} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import Form from './Form/Form'
 
 class SigninPg extends React.Component {
-
     render() {
         return (
             <div className={classes.container}>

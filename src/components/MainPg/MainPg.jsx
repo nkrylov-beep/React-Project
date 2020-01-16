@@ -1,8 +1,9 @@
 import React from 'react';
-import classes from './MainPg.modules.css';
+import classes from './MainPg.module.css';
+import { NavLink } from "react-router-dom";
 
 class MainPg extends React.Component {
-    render(){
+    render() {
         return (
             <div className={classes.container}>
 
