@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 50px 50px 50px 200px;
+    grid-template-rows: 50px 100px 50px 200px;
     grid-template-areas: ". . . button" ". . inscr ." ". . . ." ". form form ." ". . . .";
     color: rgb(0, 37, 204);
 }
