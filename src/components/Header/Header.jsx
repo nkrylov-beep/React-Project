@@ -15,19 +15,19 @@ class Header extends React.Component {
     render() {
         return (
             <div className={classes.header}>
-                <img src="./favicon.ico" alt="logo"/>
+                <img src="./favicon.ico" alt="logo" />
                 <NavLink className={classes.link} to='/'>
                     HΞHMΔΛ
                 </NavLink>
                 <div className={classes.userName}>
-                    {this.props.isAuthorized && `Пользователь: ${this.props.nickname}`}
+                    {document.cookie && `Пользователь: ${this.props.nickname}`}
                 </div>
-                <div className={classes.exitButton} onClick={this.handleClick}>
-                    {this.props.isAuthorized && <div className={classes.link} to='/'>
+                <div className={classes.exitButton}>
+                    {document.cookie && <div className={classes.link} onClick={this.handleClick}>
                         Выйти
                     </div>}
                 </div>
-            </div>
+            </div >
         );
     }
 }

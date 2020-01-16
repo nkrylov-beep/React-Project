@@ -4,11 +4,11 @@ import MsgItem from './MsgItem/MsgItem';
 
 class MessageList extends React.Component {
   render() {
-    refreshMessages();
+    //refreshMessages();
     return (
-        <ul className={classes.messagelist}>
-          {this.props.messages.map(message => <MsgItem message={message} />)}
-        </ul>
+      <ul className={classes.messagelist}>
+        {this.props.messages.map(message => <MsgItem message={message} />)}
+      </ul>
     )
   }
 }

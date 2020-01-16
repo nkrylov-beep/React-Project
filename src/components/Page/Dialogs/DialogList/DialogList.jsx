@@ -7,9 +7,9 @@ class DialogList extends React.Component {
     render() {
         return (
             <ul className={classes.dialoglist}>
-                {this.props.dialogs.map(dialog => {
+                {this.props.dialogs && this.props.dialogs.map(dialog => {
                     return (
-                        <DialogItem dialogData={dialog} onChoosingDialog={this.props.onChoosingDialog} />
+                        <DialogItem dialogData={dialog} onChoosingDialog={this.props.onChoosingDialog} id={this.props.id} />
                     )
                 })}
             </ul>

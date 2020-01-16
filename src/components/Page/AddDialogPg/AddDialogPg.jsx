@@ -5,9 +5,15 @@ class AddDialogPg extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.state = {
+            status: ""
+        };
     }
-    handleClick = () => {
-        this.props.onCreateDlg(this.input.value);
+    handleClick = async () => {
+        this.state.status = await this.props.onCreateDlg(this.input.value);
+        this.setState({
+            status: this.state.status
+        });
     }
     render() {
         return (
@@ -21,6 +27,7 @@ class AddDialogPg extends React.Component {
                 <div className={classes.but}>
                     <div className={classes.btn} onClick={this.handleClick}>готово</div>
                 </div>
+                <div className={classes.status}>{this.state.status}</div>
                 <div className={classes.text2}>Можно ввести свой логин, если хотите писать самому себе</div>
             </div>
         );

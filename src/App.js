@@ -39,49 +39,13 @@ class App extends React.Component {
                     time: "12 Января 04:13"
                 }
             ],
-            chat_list: [
-                {
-                    dialogId: "dialog1",
-                    lastsenderId: "perborgen",
-                    text: "who'll win you think?",
-                },
-                {
-                    dialogId: "dialog2",
-                    lastsenderId: "janedoe",
-                    text: "Brazil!"
-                },
-                {
-                    dialogId: "dialog2",
-                    lastsenderId: "janedoe",
-                    text: "Brazil!"
-                },
-                {
-                    dialogId: "dialog2",
-                    lastsenderId: "janedoe",
-                    text: "Brazil!"
-                },
-                {
-                    dialogId: "dialog2",
-                    lastsenderId: "janedoe",
-                    text: "Brazil!"
-                },
-                {
-                    dialogId: "dialog2",
-                    lastsenderId: "janedoe",
-                    text: "Brazil!"
-                },
-                {
-                    dialogId: "dialog2",
-                    lastsenderId: "janedoe",
-                    text: "Brazil!"
-                }
-            ]
-        };
+            chat_list: null
+        }
     }
     render() {
         return (
             <Router history={this.customHistory}>
-                <Header isAuthorized={document.cookie} onExit={this.onExit} nickname={this.state.nickname} />
+                <Header onExit={this.onExit} nickname={this.state.nickname} />
                 <div className='wrapper'>
                     <PrivateRouteComponent path="/page" render={props => <Page
                         refreshUserData={this.getUserData}
@@ -92,6 +56,7 @@ class App extends React.Component {
                         onChoosingDialog={this.onChoosingDialog}
                         dialogId={this.state.dialogId}
                         createDialog={this.createDialog}
+                        id={this.state.id}
                     />} isAuthenticated={document.cookie} redirectPath="/" />
                     <PrivateRouteComponent path="/login" render={props => <SigninPg login={this.signin} />} isAuthenticated={!document.cookie} redirectPath="/page" />
                     <PrivateRouteComponent path="/signup" render={props => <SignupPg registration={this.signup} />} isAuthenticated={!document.cookie} redirectPath="/page" />
@@ -106,6 +71,7 @@ class App extends React.Component {
                         onChoosingDialog={this.onChoosingDialog}
                         dialogId={this.state.dialogId}
                         createDialog={this.createDialog}
+                        id={this.state.id}
                     />} />
                     <Route exact path="/" render={props => <MainPg isAuthorized={document.cookie} />} />
                 </div>
@@ -114,26 +80,35 @@ class App extends React.Component {
     }
     refreshUserData = async () => {
         const data = await getUserData();
-        if (data.id) {
-            this.setState({
-                id: data.id,
-                login: data.login,
-                nickname: data.nickname,
-                chat_list: this.state.chat_list,
-                contacts: data.contacts
+        if (data) {
+            this.state.id = data.id;
+            this.state.login = data.login;
+            this.state.nickname = data.nickname;
+            this.state.contacts = data.contacts;
+            const chats_request = await fetch('https://hehmda.herokuapp.com/api/v1/users/chats', {
+                method: 'POST',
+                body: `{\"id\": \"${this.state.id}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
             });
+            const chats = await chats_request.json();
+            this.state.chat_list = chats;
+            this.setState();
         }
         return this.state;
     }
     signup = async (e) => {
         const data = await registration(e)
         if (data.id) {
+            const chats_request = await fetch('https://hehmda.herokuapp.com/api/v1/users/chats', {
+                method: 'POST',
+                body: `{\"id\": \"${data.id}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
+            });
+            const chats = await chats_request.json();
             this.setState({
                 id: data.id,
                 login: data.login,
                 nickname: data.nickname,
-                chat_list: data.chat_list,
-                contacts: data.contacts
+                contacts: data.contacts,
+                chat_list: chats
             });
             this.customHistory.push('/page');
         }
@@ -142,12 +117,17 @@ class App extends React.Component {
     signin = async (e) => {
         const data = await login(e)
         if (data.id) {
+            const chats_request = await fetch('https://hehmda.herokuapp.com/api/v1/users/chats', {
+                method: 'POST',
+                body: `{\"id\": \"${data.id}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
+            });
+            const chats = await chats_request.json();
             this.setState({
                 id: data.id,
                 login: data.login,
                 nickname: data.nickname,
-                chat_list: data.chat_list,
-                contacts: data.contacts
+                contacts: data.contacts,
+                chat_list: chats
             });
             this.customHistory.push('/page');
         }
@@ -156,7 +136,7 @@ class App extends React.Component {
     onExit = () => {
         var cookie_date = new Date();
         cookie_date.setTime(cookie_date.getTime() - 1);
-        console.log(document.cookie += "=; expires=" + cookie_date.toGMTString());
+        document.cookie += "=; expires=" + cookie_date.toGMTString();
         document.cookie = document.cookie.split("=")[1] += "=; expires=" + cookie_date.toGMTString();
         this.setState({
             id: null,
@@ -181,18 +161,31 @@ class App extends React.Component {
         });
         return this.state.dialogId;
     }
-    createDialog = (dlgName) => {
-        this.state.chat_list.unshift({
-            dialogId: dlgName,
-            lastsenderId: "Vasilii",
-            text: "perfocards!!!"
+    createDialog = async (dlgName) => {
+        const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/addcontactbylogin', {
+            method: 'POST',
+            body: `{\"login\": \"${dlgName}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
         });
-        this.setState({
-            dialogId: -2,
-            chat_list: this.state.dialogs,
-            addDlgBtnInscr: "Создать диалог"
-        })
-        console.log(this.state.chat_list)
+        const data = await api_url.json();
+        if (data.code && data.code != 200) {
+            return data.status_msg;
+        } else {
+            await fetch('https://hehmda.herokuapp.com/api/v1/chats/addtochat', {
+                method: 'POST',
+                body: `{\"new_user_id\": \"${data.id}\", \"chat_id\": \"\", \"session\": \"${document.cookie.split("=")[1]}\"}`
+            });
+            const chats_request = await fetch('https://hehmda.herokuapp.com/api/v1/users/chats', {
+                method: 'POST',
+                body: `{\"id\": \"${this.state.id}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
+            });
+            const chats = await chats_request.json();
+            this.setState({
+                dialogId: -2,
+                addDlgBtnInscr: "Добавить диалог",
+                chat_list: chats
+            })
+        }
+
     }
 }
 
