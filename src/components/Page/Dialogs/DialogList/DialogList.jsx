@@ -9,7 +9,7 @@ class DialogList extends React.Component {
             <ul className={classes.dialoglist}>
                 {this.props.dialogs && this.props.dialogs.map(dialog => {
                     return (
-                        <DialogItem dialogData={dialog} onChoosingDialog={this.props.onChoosingDialog} id={this.props.id} />
+                        <DialogItem dialogData={dialog} onChoosingDialog={this.props.onChoosingDialog} id={this.props.id} key={dialog.id} />
                     )
                 })}
             </ul>

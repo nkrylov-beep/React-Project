@@ -11,17 +11,11 @@ class Content extends React.Component {
       messages: this.props.msgs
     };
   }
-  refreshMessageList = (message) => {
-    this.state.messages.push(message)
-    this.setState({
-      messages: this.state.messages
-    });
-  }
   render() {
     return (
       <div className={classes.content}>
         <MessageList messages={this.state.messages} />
-        <SendMessageForm onRefreshMessageList={this.refreshMessageList} />
+        <SendMessageForm onRefreshMessageList={this.props.onRefreshMessageList} />
       </div>
     )
   }

@@ -32,7 +32,7 @@ class Page extends React.Component {
                 <div className={classes.content}>
                     {this.props.dialogId == -1 && <AddDialogPg onCreateDlg={this.props.createDialog} />}
                     {this.props.dialogId == -2 && <div />}
-                    {this.props.dialogId > 0 && <Content msgs={this.props.cur_messages} />}
+                    {this.props.dialogId != -1 && this.props.dialogId != -2 && <Content msgs={this.props.cur_messages} onRefreshMessageList={this.props.onRefreshMessageList} />}
                 </div>
             </div>
         );

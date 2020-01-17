@@ -18,12 +18,13 @@ class SendMessageForm extends React.Component {
     })
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault()
     this.setState({
       message: ''
     })
-    this.props.onRefreshMessageList({ author: "Alex", text: this.state.message, time: (new Date()).format('dd mm hh:MM') })
+    if (this.state.message != "")
+      await this.props.onRefreshMessageList({ text: this.state.message, time: (new Date()).format('dd mm hh:MM') })
   }
 
   render() {

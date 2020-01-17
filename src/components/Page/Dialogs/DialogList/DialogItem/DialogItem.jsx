@@ -27,8 +27,9 @@ class DialogItem extends React.Component {
         }
         this.setState({ dlgName: data.nickname });
     }
-    handleClick(e) {
-        this.props.onChoosingDialog(this.state.status)
+    async handleClick(e) {
+        console.log(this.state.status)
+        await this.props.onChoosingDialog(this.state.status)
     }
     render() {
         return (
@@ -37,7 +38,7 @@ class DialogItem extends React.Component {
                     {this.state.dlgName}
                 </div>
                 <div>
-                    <span className={classes.lastsenderId}>{this.props.dialogData.lastsenderId}</span>: {this.props.dialogData.text}
+                    <span className={classes.lastsenderId}>{this.props.dialogData.lastsenderId}</span> {this.props.dialogData.text}
                 </div>
             </ul>
         );

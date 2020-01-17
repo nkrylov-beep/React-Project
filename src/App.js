@@ -57,6 +57,7 @@ class App extends React.Component {
                         dialogId={this.state.dialogId}
                         createDialog={this.createDialog}
                         id={this.state.id}
+                        onRefreshMessageList={this.addMessage}
                     />} isAuthenticated={document.cookie} redirectPath="/" />
                     <PrivateRouteComponent path="/login" render={props => <SigninPg login={this.signin} />} isAuthenticated={!document.cookie} redirectPath="/page" />
                     <PrivateRouteComponent path="/signup" render={props => <SignupPg registration={this.signup} />} isAuthenticated={!document.cookie} redirectPath="/page" />
@@ -72,6 +73,7 @@ class App extends React.Component {
                         dialogId={this.state.dialogId}
                         createDialog={this.createDialog}
                         id={this.state.id}
+                        onRefreshMessageList={this.addMessage}
                     />} />
                     <Route exact path="/" render={props => <MainPg isAuthorized={document.cookie} />} />
                 </div>
@@ -81,19 +83,20 @@ class App extends React.Component {
     refreshUserData = async () => {
         const data = await getUserData();
         if (data) {
-            this.state.id = data.id;
-            this.state.login = data.login;
-            this.state.nickname = data.nickname;
-            this.state.contacts = data.contacts;
             const chats_request = await fetch('https://hehmda.herokuapp.com/api/v1/users/chats', {
                 method: 'POST',
-                body: `{\"id\": \"${this.state.id}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
+                body: `{\"id\": \"${data.id}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
             });
             const chats = await chats_request.json();
-            this.state.chat_list = chats;
-            this.setState();
+            this.setState({
+                id: data.id,
+                login: data.login,
+                nickname: data.nickname,
+                contacts: data.contacts,
+                chat_list: chats
+            });
+            return this.state;
         }
-        return this.state;
     }
     signup = async (e) => {
         const data = await registration(e)
@@ -147,7 +150,7 @@ class App extends React.Component {
         });
         this.customHistory.push('/');
     }
-    onChoosingDialog = (dialogValue) => {
+    onChoosingDialog = async (dialogValue) => {
         if (dialogValue == -1 && this.state.dialogId == dialogValue) {
             this.state.addDlgBtnInscr = "Добавить диалог";
             dialogValue = -2;
@@ -155,11 +158,23 @@ class App extends React.Component {
         if (dialogValue == -1 && this.state.dialogId != dialogValue) {
             this.state.addDlgBtnInscr = "Отмена";
         }
+        else {
+            this.state.addDlgBtnInscr = "Добавить диалог";
+            const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/chats/getnewmessages', {
+                method: 'POST',
+                body: `{\"chat_id\":\"${dialogValue}\", \"last_id\":\"1\"}`
+            });
+            const data = await api_url.json();
+            console.log(data);
+            if (Array.isArray(data)) {
+            } else {
+            }
+        }
         this.setState({
             dialogId: dialogValue,
-            addDlgBtnInscr: this.state.addDlgBtnInscr
+            addDlgBtnInscr: this.state.addDlgBtnInscr,
+            chat_list: ""
         });
-        return this.state.dialogId;
     }
     createDialog = async (dlgName) => {
         const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/addcontactbylogin', {
@@ -185,7 +200,17 @@ class App extends React.Component {
                 chat_list: chats
             })
         }
-
+    }
+    addMessage = async (message) => {
+        console.log(this.state.dialogId)
+        await fetch('https://hehmda.herokuapp.com/api/v1/chats/send', {
+            method: 'POST',
+            body: `{\"chat_id\": \"${this.state.dialogId}\", \"content\": \"${message.text}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
+        })
+        this.state.cur_messages.push(message)
+        this.setState({
+            cur_messages: this.state.cur_messages
+        });
     }
 }
 
