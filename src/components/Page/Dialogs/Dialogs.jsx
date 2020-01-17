@@ -22,7 +22,8 @@ class Dialogs extends React.Component {
   }
   async getChats() {
     const dlgs = await this.props.getDialogs();
-    if (Array.isArray(dlgs)) {
+    console.log(dlgs !== this.state.dialogs)
+    if (dlgs !== this.state.dialogs && Array.isArray(dlgs)) {
       this.setState({
         dialogs: dlgs
       })

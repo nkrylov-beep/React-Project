@@ -28,7 +28,6 @@ class DialogItem extends React.Component {
         this.setState({ dlgName: data.nickname });
     }
     async handleClick(e) {
-        console.log(this.state.status)
         await this.props.onChoosingDialog(this.state.status)
     }
     render() {

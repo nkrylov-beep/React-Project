@@ -14,7 +14,7 @@ class Content extends React.Component {
   render() {
     return (
       <div className={classes.content}>
-        <MessageList messages={this.state.messages} />
+        <MessageList messages={this.state.messages} getMsgs={this.props.getMsgs} />
         <SendMessageForm onRefreshMessageList={this.props.onRefreshMessageList} />
       </div>
     )

@@ -22,23 +22,7 @@ class App extends React.Component {
             contacts: null,
             dialogId: -2,
             addDlgBtnInscr: "Добавить диалог",
-            cur_messages: [
-                {
-                    author: "dfhtrfh",
-                    text: "dgh",
-                    time: "12 Января 04:13"
-                },
-                {
-                    author: "dfhtrfh",
-                    text: "dgh",
-                    time: "12 Января 04:13"
-                },
-                {
-                    author: "dfhtrfh",
-                    text: "dgh",
-                    time: "12 Января 04:13"
-                }
-            ],
+            cur_messages: [],
             chat_list: null
         }
     }
@@ -75,6 +59,7 @@ class App extends React.Component {
                         id={this.state.id}
                         onRefreshMessageList={this.addMessage}
                         getDialogs={this.getDialogs}
+                        getMsgs={this.getMsgs}
                     />} />
                     <Route exact path="/" render={props => <MainPg isAuthorized={document.cookie} />} />
                 </div>
@@ -170,19 +155,33 @@ class App extends React.Component {
             this.state.addDlgBtnInscr = "Добавить диалог";
             const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/chats/getnewmessages', {
                 method: 'POST',
-                body: `{\"chat_id\":\"${dialogValue}\", \"last_id\":\"1\"}`
+                body: `{\"chat_id\":\"${dialogValue}\", \"last_id\":\"-1\", \"session\":\"${document.cookie.split("=")[1]}\"}`
             });
-            const data = await api_url.json();
-            console.log(data);
-            if (Array.isArray(data)) {
+            const msgs = await api_url.json();
+            if (msgs && Array.isArray(msgs.messages)) {
+                this.state.cur_messages = msgs.messages;
             } else {
+                console.log("не удалось получить сообщения")
             }
         }
         this.setState({
             dialogId: dialogValue,
             addDlgBtnInscr: this.state.addDlgBtnInscr,
-            chat_list: ""
+            cur_messages: this.state.cur_messages
         });
+    }
+    getMsgs = async () => {
+        const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/chats/getnewmessages', {
+            method: 'POST',
+            body: `{\"chat_id\":\"${this.state.dialogId}\", \"last_id\":\"-1\", \"session\":\"${document.cookie.split("=")[1]}\"}`
+        });
+        const msgs = await api_url.json();
+        console.log(msgs)
+        if (msgs && Array.isArray(msgs.messages)) {
+            return msgs.messages
+        } else {
+            return []
+        }
     }
     createDialog = async (dlgName) => {
         const api_url = await fetch('https://hehmda.herokuapp.com/api/v1/users/addcontactbylogin', {
@@ -210,7 +209,6 @@ class App extends React.Component {
         }
     }
     addMessage = async (message) => {
-        console.log(this.state.dialogId)
         await fetch('https://hehmda.herokuapp.com/api/v1/chats/send', {
             method: 'POST',
             body: `{\"chat_id\": \"${this.state.dialogId}\", \"content\": \"${message.text}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
