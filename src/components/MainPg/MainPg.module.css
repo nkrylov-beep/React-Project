@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 170px 170px 170px;
+    grid-template-rows: 170px 170px 170px 170px 170px;
     grid-template-areas: ". . . ." ". loginBtn signupBtn ." ". . . ." ". info info .";
     color: rgb(52, 104, 156);
     align-items: center;
@@ -18,7 +18,11 @@
 .kaomoji9,
 .kaomoji10,
 .kaomoji11,
-.kaomoji12 {
+.kaomoji12,
+.kaomoji13,
+.kaomoji14,
+.kaomoji15,
+.kaomoji16 {
     color: lightgrey;
     font-size: 200%;
     text-align: center;
@@ -81,6 +85,26 @@
 
 .kaomoji12 {
     grid-row: 4;
+    grid-column: 4;
+}
+
+.kaomoji13 {
+    grid-row: 5;
+    grid-column: 1;
+}
+
+.kaomoji14 {
+    grid-row: 5;
+    grid-column: 2;
+}
+
+.kaomoji15 {
+    grid-row: 5;
+    grid-column: 3;
+}
+
+.kaomoji16 {
+    grid-row: 5;
     grid-column: 4;
 }
 
