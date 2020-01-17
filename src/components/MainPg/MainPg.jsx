@@ -36,6 +36,10 @@ class MainPg extends React.Component {
                 <div className={classes.kaomoji10}>(◕‿◕✿)</div>
                 <div className={classes.kaomoji11}>(￣^￣)ゞ</div>
                 <div className={classes.kaomoji12}>(ﾉ≧∀≦)ﾉ‥…━━━★</div>
+                <div className={classes.kaomoji13}>	°˖✧◝(⁰▿⁰)◜✧˖°</div>
+                <div className={classes.kaomoji14}>( ‾́ ◡ ‾́ )</div>
+                <div className={classes.kaomoji15}>(✯◡✯)</div>
+                <div className={classes.kaomoji16}>(￣▽￣*)ゞ</div>
             </div>
         );
     }
