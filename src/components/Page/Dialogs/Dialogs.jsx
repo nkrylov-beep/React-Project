@@ -12,12 +12,27 @@ class Dialogs extends React.Component {
     };
   }
   render() {
+    this.refreshChats();
     return (
       <div className={classes.dialogs}>
-        <AddDialog onChoosingDialog={this.props.onChoosingDialog} inscr={this.props.inscr}/>
-        <DialogList dialogs={this.state.dialogs} onChoosingDialog={this.props.onChoosingDialog} id={this.props.id}/>
+        <AddDialog onChoosingDialog={this.props.onChoosingDialog} inscr={this.props.inscr} />
+        <DialogList dialogs={this.state.dialogs} onChoosingDialog={this.props.onChoosingDialog} id={this.props.id} />
       </div>
     );
+  }
+  async getChats() {
+    const dlgs = await this.props.getDialogs();
+    if (Array.isArray(dlgs)) {
+      this.setState({
+        dialogs: dlgs
+      })
+    } else {
+      console.log("Не удалось обновить")
+    }
+  }
+  async refreshChats() {
+    await this.getChats();
+    setTimeout(await this.refreshChats, 10000000);
   }
 }
 

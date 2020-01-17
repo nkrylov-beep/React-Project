@@ -74,11 +74,19 @@ class App extends React.Component {
                         createDialog={this.createDialog}
                         id={this.state.id}
                         onRefreshMessageList={this.addMessage}
+                        getDialogs={this.getDialogs}
                     />} />
                     <Route exact path="/" render={props => <MainPg isAuthorized={document.cookie} />} />
                 </div>
             </Router >
         );
+    }
+    getDialogs = async () => {
+        const chats_request = await fetch('https://hehmda.herokuapp.com/api/v1/users/chats', {
+            method: 'POST',
+            body: `{\"id\": \"${this.state.id}\", \"session\": \"${document.cookie.split("=")[1]}\"}`
+        });
+        return await chats_request.json();
     }
     refreshUserData = async () => {
         const data = await getUserData();

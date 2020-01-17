@@ -8,16 +8,11 @@ import AddDialogPg from './AddDialogPg/AddDialogPg';
 class Page extends React.Component {
     constructor(props) {
         super(props);
-        this._isMounted = false;
         this.state = {
         };
     }
     componentDidMount() {
-        this._isMounted = true;
         this.props.refreshUserData();
-    }
-    componentWillUnmount() {
-        this._isMounted = false;
     }
     render() {
         return (
@@ -28,6 +23,7 @@ class Page extends React.Component {
                     dlgs={this.props.chat_list}
                     inscr={this.props.inscr}
                     id={this.props.id}
+                    getDialogs={this.props.getDialogs}
                 /></div>
                 <div className={classes.content}>
                     {this.props.dialogId == -1 && <AddDialogPg onCreateDlg={this.props.createDialog} />}
